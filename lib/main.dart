@@ -26,11 +26,15 @@ class mainPage extends StatefulWidget {
 }
 
 Map<String, String> data = {};
+// ignore: non_constant_identifier_names
 
 // ignore: camel_case_types
 class _mainPageState extends State<mainPage> {
   @override
   Widget build(BuildContext context) {
+    List<int> key_index = [0, 1, 2, 3, 4, 5];
+    key_index.shuffle();
+
     return Scaffold(
       backgroundColor: Colors.lightBlue.shade50,
       appBar: AppBar(
@@ -47,27 +51,27 @@ class _mainPageState extends State<mainPage> {
                   padding: const EdgeInsets.only(right: 42),
                   child: Column(
                     children: [
-                      ButtonValues(false, 0),
+                      ButtonValues(false, key_index[0]),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(false, 1),
+                      ButtonValues(false, key_index[1]),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(false, 2),
+                      ButtonValues(false, key_index[2]),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(false, 3),
+                      ButtonValues(false, key_index[3]),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(false, 4),
+                      ButtonValues(false, key_index[4]),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(false, 5),
+                      ButtonValues(false, key_index[5]),
                     ],
                   ),
                 ),
