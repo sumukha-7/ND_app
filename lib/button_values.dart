@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 
 final List _keys = ['k1', 'k2', 'k3', 'k4', 'k5', 'k6'];
@@ -17,7 +15,7 @@ ButtonValues(bool textType, int index) {
       height: 50,
       child: Align(
         child: Text(
-          textType ? _keys[index] : _values[index],
+          textType ? _values[index] : _keys[index],
         ),
       ),
     ),
