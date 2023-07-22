@@ -1,23 +1,25 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
-class ButtonValues extends StatelessWidget {
-  ButtonValues({super.key});
-
-  final List _buttons = ['test1', 'test2', 'test3', 'test4', 'test5', 'test6'];
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      style: ButtonStyle(
-        padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
-        backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
+final List _keys = ['k1', 'k2', 'k3', 'k4', 'k5', 'k6'];
+final List _values = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
+// ignore: non_constant_identifier_names
+ButtonValues(bool textType, int index) {
+  return TextButton(
+    style: ButtonStyle(
+      padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
+      backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
+    ),
+    onPressed: () {},
+    child: SizedBox(
+      width: 100,
+      height: 50,
+      child: Align(
+        child: Text(
+          textType ? _keys[index] : _values[index],
+        ),
       ),
-      onPressed: () {},
-      child: const SizedBox(
-        width: 100,
-        height: 50,
-        child: Align(child: Text('test')),
-      ),
-    );
-  }
+    ),
+  );
 }

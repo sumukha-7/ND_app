@@ -47,27 +47,27 @@ class _mainPageState extends State<mainPage> {
                   padding: const EdgeInsets.only(right: 42),
                   child: Column(
                     children: [
-                      ButtonValues(),
+                      ButtonValues(false, 0),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(false, 1),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(false, 2),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(false, 3),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(false, 4),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(false, 5),
                     ],
                   ),
                 ),
@@ -75,27 +75,27 @@ class _mainPageState extends State<mainPage> {
                   padding: const EdgeInsets.only(left: 42),
                   child: Column(
                     children: [
-                      ButtonValues(),
+                      ButtonValues(true, 0),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(true, 1),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(true, 2),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(true, 3),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(true, 4),
                       const SizedBox(
                         height: 20,
                       ),
-                      ButtonValues(),
+                      ButtonValues(true, 5),
                     ],
                   ),
                 ),
