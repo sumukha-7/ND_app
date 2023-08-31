@@ -1,23 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-final List _keys = ['k1', 'k2', 'k3', 'k4', 'k5', 'k6'];
-final List _values = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
-// ignore: non_constant_identifier_names
-ButtonValues(bool textType, int index) {
-  return TextButton(
-    style: ButtonStyle(
-      padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
-      backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
-    ),
-    onPressed: () {},
-    child: SizedBox(
-      width: 100,
-      height: 50,
-      child: Align(
-        child: Text(
-          textType ? _values[index] : _keys[index],
+final List<String> _keys = [
+  'samui',
+  'kaze',
+  'chika',
+  'ushiro',
+  'yama',
+  'higashi'
+];
+final List<String> _values = [
+  'cold',
+  'wind',
+  'underground',
+  'behind',
+  'mountain',
+  'east'
+];
+Future<void> fetchRandomPairs() async {
+  final response = await http.get(Uri.parse('http://127.0.0.1:5000/'));
+
+  if (response.statusCode == 200) {
+    final jsonData = json.decode(response.body);
+
+    _keys.clear();
+    _values.clear();
+
+    for (final entry in jsonData.entries) {
+      _keys.add(entry.key);
+      _values.add(entry.value);
+    }
+  } else {
+    print('Failed to fetch random pairs: ${response.statusCode}');
+  }
+}
+
+class ButtonValues extends StatefulWidget {
+  final bool textType;
+  final int index;
+
+  ButtonValues(this.textType, this.index);
+
+  @override
+  _ButtonValuesState createState() => _ButtonValuesState();
+}
+
+class _ButtonValuesState extends State<ButtonValues> {
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
+        backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
+      ),
+      onPressed: () {
+        // Handle button click here
+      },
+      child: SizedBox(
+        width: 100,
+        height: 50,
+        child: Align(
+          child: Text(
+            widget.textType ? _values[widget.index] : _keys[widget.index],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }

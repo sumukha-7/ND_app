@@ -31,6 +31,12 @@ Map<String, String> data = {};
 // ignore: camel_case_types
 class _mainPageState extends State<mainPage> {
   @override
+  void initState() {
+    super.initState();
+    fetchRandomPairs();
+  }
+
+  @override
   Widget build(BuildContext context) {
     List<int> key_index = [0, 1, 2, 3, 4, 5];
     key_index.shuffle();
