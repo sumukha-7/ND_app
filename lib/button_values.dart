@@ -47,15 +47,34 @@ class ButtonValues extends StatefulWidget {
 }
 
 class _ButtonValuesState extends State<ButtonValues> {
+  bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
         padding: MaterialStateProperty.all(const EdgeInsets.all(8)),
-        backgroundColor: MaterialStateProperty.all(Colors.grey[300]),
+        backgroundColor: MaterialStateProperty.all(
+          isSelected ? Colors.red : Colors.grey[300],
+        ),
       ),
       onPressed: () {
-        // Handle button click here
+        setState(() {
+          isSelected = !isSelected;
+        });
+
+        if (!widget.textType) {
+          // For the first six buttons, toggle selection
+          // by changing the background color to red
+        } else {
+          // For the next six buttons, check if it's a correct pair
+          bool isPairCorrect = _keys[widget.index] == _values[widget.index];
+          if (isPairCorrect) {
+            // Set both buttons to green
+          } else {
+            // Reset the selection on the first column
+          }
+        }
       },
       child: SizedBox(
         width: 100,
