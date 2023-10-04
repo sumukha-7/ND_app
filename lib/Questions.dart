@@ -14,10 +14,10 @@ class Question {
       required this.answer,
       required this.options});
 
-  // Function to fetch data from the API
-  static Future<List<Question>> fetchQuestions() async {
+  // Function to fetch data from the vocab data from API
+  static Future<List<Question>> fetchQuestions({required String source}) async {
     final response =
-        await http.get(Uri.parse('http://192.168.0.111:5000/questions'));
+        await http.get(Uri.parse('http://192.168.0.111:5000/$source'));
 
     if (response.statusCode == 200) {
       List<dynamic> jsonResponse = json.decode(response.body);
