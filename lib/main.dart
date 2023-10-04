@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
 import 'package:nihongo_dekita/welcome_screen.dart';
+import 'package:nihongo_dekita/QuestionController.dart';
 
 void main() {
   runApp(MyApp());
+  Get.put(QuestionController());
 }
 
 class MyApp extends StatelessWidget {
