@@ -40,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Color.fromARGB(255, 54, 132, 196),
-                      hintText: "Enter your name",
+                      hintText: "おなまえ を おねがいします",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12)))),
                 ),
