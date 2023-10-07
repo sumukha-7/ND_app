@@ -1,7 +1,7 @@
 # nihongo_dekita
 
 This is a personal project of mine. The aim is to develop a Japanese learning app in which the user can upload their own data and have quizzes to learn from it.
-This project uses Flutter for the frontend, Flask for the backend.
+This project uses Flutter for the frontend, Flask for the backend and SQLite for the database.
 
 Sample pictures of my app:
 
