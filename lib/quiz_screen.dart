@@ -14,11 +14,21 @@ class QuizScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         actions: [
-          ElevatedButton(
-              onPressed: _controller.nextQuestion, child: Text("Skip"))
+          Obx(() => _controller.isLoading.value
+              ? Container()
+              : ElevatedButton(
+                  onPressed: _controller.nextQuestion,
+                  child: const Text("Skip"),
+                )),
         ],
       ),
-      body: QuizBody(),
+      body: Obx(() {
+        if (_controller.isLoading.value) {
+          return const Center(child: CircularProgressIndicator());
+        } else {
+          return QuizBody();
+        }
+      }),
     );
   }
 }

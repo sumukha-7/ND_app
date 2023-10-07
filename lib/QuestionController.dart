@@ -33,10 +33,10 @@ class QuestionController extends GetxController
   int _numOfCorrectAns = 0;
   int get numOfCorrectAns => this._numOfCorrectAns;
 
+  var isLoading = true.obs;
+
   @override
   void onInit() {
-    fetchAndSetQuestions();
-
     _animationController =
         AnimationController(duration: Duration(seconds: 60), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
@@ -44,9 +44,12 @@ class QuestionController extends GetxController
         update();
       });
 
-    _animationController.forward().whenComplete(nextQuestion);
     _pageController = PageController();
     super.onInit();
+  }
+
+  void startTimer() {
+    _animationController.forward().whenComplete(nextQuestion);
   }
 
   @override
@@ -81,7 +84,7 @@ class QuestionController extends GetxController
 
       _animationController.forward().whenComplete(nextQuestion);
     } else {
-      Get.to(ScoreScreen());
+      Get.off(ScoreScreen());
     }
   }
 
@@ -89,20 +92,24 @@ class QuestionController extends GetxController
     _questionNumber.value = index + 1;
   }
 
-  void fetchAndSetQuestions() async {
+  Future<void> fetchAndSetQuestions(String source) async {
+    isLoading.value = true;
     try {
-      List<Question> fetchedQuestions = await Question.fetchQuestions();
+      List<Question> fetchedQuestions =
+          await Question.fetchQuestions(source: source);
       _questions.addAll(fetchedQuestions);
     } catch (e) {
       print("Failed to fetch questions: $e");
+    } finally {
+      isLoading.value = false;
     }
   }
 
-  void reset() {
+  Future<void> reset(String source) async {
     _questions.clear();
+    await fetchAndSetQuestions(source);
     _isAnswered = false;
     _numOfCorrectAns = 0;
     _questionNumber.value = 1;
-    fetchAndSetQuestions();
   }
 }

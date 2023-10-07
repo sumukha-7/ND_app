@@ -37,7 +37,6 @@ class ScoreScreen extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () {
-                    _qnController.reset();
                     Get.offAll(() => WelcomeScreen());
                   },
                   child: const Text(
