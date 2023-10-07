@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:nihongo_dekita/QuestionController.dart';
@@ -13,7 +15,7 @@ class ProgressBar extends StatelessWidget {
       width: double.infinity,
       height: 35,
       decoration: BoxDecoration(
-        border: Border.all(color: Color(0xFF3F4768), width: 3),
+        border: Border.all(color: const Color(0xFF3F4768), width: 3),
         borderRadius: BorderRadius.circular(50),
       ),
       child: GetBuilder<QuestionController>(

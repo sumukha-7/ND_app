@@ -4,11 +4,13 @@ import 'package:nihongo_dekita/welcome_screen.dart';
 import 'package:nihongo_dekita/QuestionController.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
   Get.put(QuestionController());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

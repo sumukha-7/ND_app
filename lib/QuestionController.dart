@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_final_fields, file_names
 
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -7,38 +7,39 @@ import 'package:nihongo_dekita/score_screen.dart';
 
 class QuestionController extends GetxController
     with GetSingleTickerProviderStateMixin {
+  String? userName;
   late AnimationController _animationController;
   late Animation _animation;
 
-  Animation get animation => this._animation;
+  Animation get animation => _animation;
 
   late PageController _pageController;
-  PageController get pageController => this._pageController;
+  PageController get pageController => _pageController;
 
   var _questions = <Question>[].obs;
-  List<Question> get questions => this._questions;
+  List<Question> get questions => _questions;
 
   bool _isAnswered = false;
-  bool get isAnswered => this._isAnswered;
+  bool get isAnswered => _isAnswered;
 
   late int _correctAns;
-  int get correctAns => this._correctAns;
+  int get correctAns => _correctAns;
 
   late int _selectedAns;
-  int get selectedAns => this._selectedAns;
+  int get selectedAns => _selectedAns;
 
   RxInt _questionNumber = 1.obs;
-  RxInt get questionNumber => this._questionNumber;
+  RxInt get questionNumber => _questionNumber;
 
   int _numOfCorrectAns = 0;
-  int get numOfCorrectAns => this._numOfCorrectAns;
+  int get numOfCorrectAns => _numOfCorrectAns;
 
   var isLoading = true.obs;
 
   @override
   void onInit() {
     _animationController =
-        AnimationController(duration: Duration(seconds: 60), vsync: this);
+        AnimationController(duration: const Duration(seconds: 60), vsync: this);
     _animation = Tween<double>(begin: 0, end: 1).animate(_animationController)
       ..addListener(() {
         update();
@@ -84,7 +85,7 @@ class QuestionController extends GetxController
 
       _animationController.forward().whenComplete(nextQuestion);
     } else {
-      Get.off(ScoreScreen());
+      Get.off(const ScoreScreen());
     }
   }
 

@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers, file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nihongo_dekita/ProgressBar.dart';
@@ -19,11 +21,11 @@ class QuizBody extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
                 child: ProgressBar(),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Obx(
@@ -31,24 +33,24 @@ class QuizBody extends StatelessWidget {
                     TextSpan(
                       text:
                           "Question ${_questionController.questionNumber.value}",
-                      style:
-                          TextStyle(color: Color.fromARGB(255, 139, 148, 188)),
+                      style: const TextStyle(
+                          color: Color.fromARGB(255, 139, 148, 188)),
                       children: [
                         TextSpan(
                             text: "/${_questionController.questions.length}",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 color: Color.fromARGB(255, 139, 148, 188))),
                       ],
                     ),
                   ),
                 ),
               ),
-              Divider(thickness: 1.5),
-              SizedBox(height: 20),
+              const Divider(thickness: 1.5),
+              const SizedBox(height: 20),
               Expanded(
                 child: PageView.builder(
                   // Block swipe to next qn
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   controller: _questionController.pageController,
                   onPageChanged: _questionController.updateTheQnNum,
                   itemCount: _questionController.questions.length,

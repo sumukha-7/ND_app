@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nihongo_dekita/quiz_screen.dart';
-import 'package:nihongo_dekita/QuestionController.dart'; // Make sure to import QuestionController
+import 'package:nihongo_dekita/QuestionController.dart';
+import 'package:nihongo_dekita/upload_data.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key); // Corrected this line
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
   @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(QuestionController());
+    final controller = Get.find<QuestionController>();
+    final nameController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Colors.blue[300],
@@ -25,30 +32,32 @@ class WelcomeScreen extends StatelessWidget {
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontSize: 30,
+                    fontSize: 32,
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 30,
                 ),
                 const Text(
                   "Enter name to start",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 50),
-                const TextField(
-                  decoration: InputDecoration(
+                const SizedBox(height: 70),
+                TextField(
+                  controller: nameController,
+                  decoration: const InputDecoration(
                       filled: true,
                       fillColor: Color.fromARGB(255, 54, 132, 196),
                       hintText: "おなまえ を おねがいします",
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12)))),
                 ),
-                const Spacer(flex: 2),
+                const Spacer(flex: 1),
                 InkWell(
                   onTap: () async {
+                    controller.userName = nameController.text;
                     await controller.reset('vocab');
-                    Get.to(() => const QuizScreen());
+                    Get.to(() => QuizScreen(userName: nameController.text));
                     controller.startTimer();
                   },
                   child: _buildButton("Start vocab quiz"),
@@ -56,13 +65,29 @@ class WelcomeScreen extends StatelessWidget {
                 const SizedBox(height: 20),
                 InkWell(
                   onTap: () async {
+                    controller.userName = nameController.text;
                     await controller.reset('kanji');
-                    Get.to(() => const QuizScreen());
+                    Get.to(() => QuizScreen(userName: nameController.text));
                     controller.startTimer();
                   },
-                  child: _buildButton("Start kanji quiz"),
+                  child: _buildButton("Start kanji quiz", isKanjiButton: true),
                 ),
                 const Spacer(flex: 2),
+                Center(
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              const Color.fromARGB(255, 11, 15, 224))),
+                      onPressed: () {
+                        Get.to(() => const UploadDataScreen());
+                      },
+                      child: const Text(
+                        "Upload your data!",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(color: Colors.white),
+                      )),
+                ),
+                const Spacer(flex: 1)
               ],
             ),
           ),
@@ -71,19 +96,23 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildButton(String text) {
+  Widget _buildButton(String text, {bool isKanjiButton = false}) {
     return Container(
       width: double.infinity,
       alignment: Alignment.center,
       padding: const EdgeInsets.all(15),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [
-              Color.fromRGBO(76, 176, 192, 1),
-              Color.fromRGBO(66, 221, 198, 1)
-            ],
-          ),
-          borderRadius: BorderRadius.all(Radius.circular(12))),
+              colors: isKanjiButton
+                  ? [
+                      const Color.fromARGB(255, 202, 153, 30),
+                      const Color.fromARGB(255, 255, 215, 0)
+                    ]
+                  : [
+                      const Color.fromRGBO(76, 176, 192, 1),
+                      const Color.fromRGBO(66, 221, 198, 1)
+                    ]),
+          borderRadius: const BorderRadius.all(Radius.circular(12))),
       child: Text(
         text,
         style: const TextStyle(
