@@ -1,6 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:nihongo_dekita/QuestionController.dart';
+import 'package:nihongo_dekita/controllers/question_controller.dart';
 
 class QuestionResult extends StatelessWidget {
   const QuestionResult({
@@ -27,7 +29,7 @@ class QuestionResult extends StatelessWidget {
                 return const Color.fromARGB(255, 233, 46, 48);
               }
             }
-            return const Color.fromARGB(255, 193, 193, 193);
+            return Color.fromARGB(255, 80, 80, 80);
           }
 
           IconData getTheRightIcon() {
@@ -39,8 +41,8 @@ class QuestionResult extends StatelessWidget {
           return InkWell(
             onTap: press,
             child: Container(
-              margin: EdgeInsets.only(top: 20),
-              padding: EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 20),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 border: Border.all(color: getTheRightColor()),
                 borderRadius: BorderRadius.circular(15),
@@ -57,14 +59,14 @@ class QuestionResult extends StatelessWidget {
                     width: 26,
                     decoration: BoxDecoration(
                       color: getTheRightColor() ==
-                              const Color.fromARGB(255, 193, 193, 193)
+                              const Color.fromARGB(255, 80, 80, 80)
                           ? Colors.transparent
                           : getTheRightColor(),
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(color: getTheRightColor()),
                     ),
                     child: getTheRightColor() ==
-                            const Color.fromARGB(255, 193, 193, 193)
+                            const Color.fromARGB(255, 80, 80, 80)
                         ? null
                         : Icon(getTheRightIcon(), size: 16),
                   )

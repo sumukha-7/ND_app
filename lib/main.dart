@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'package:nihongo_dekita/controllers/question_controller.dart';
 import 'package:nihongo_dekita/welcome_screen.dart';
-import 'package:nihongo_dekita/QuestionController.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,6 +10,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

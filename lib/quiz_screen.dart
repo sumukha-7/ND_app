@@ -1,10 +1,13 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:nihongo_dekita/QuestionController.dart';
-import 'package:nihongo_dekita/QuizBody.dart';
+import 'package:nihongo_dekita/controllers/question_controller.dart';
+import 'package:nihongo_dekita/quiz_body.dart';
 
 class QuizScreen extends StatelessWidget {
-  const QuizScreen({super.key});
+  final String userName;
+  const QuizScreen({super.key, required this.userName});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class QuizScreen extends StatelessWidget {
         if (_controller.isLoading.value) {
           return const Center(child: CircularProgressIndicator());
         } else {
-          return QuizBody();
+          return const QuizBody();
         }
       }),
     );

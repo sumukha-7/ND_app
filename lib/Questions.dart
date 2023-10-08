@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, constant_identifier_names
+// ignore_for_file: file_names, constant_identifier_names, non_constant_identifier_names
 
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -14,7 +14,6 @@ class Question {
       required this.answer,
       required this.options});
 
-  // Function to fetch data from the data from API
   static Future<List<Question>> fetchQuestions({required String source}) async {
     final response =
         await http.get(Uri.parse('http://192.168.0.111:5000/$source'));
