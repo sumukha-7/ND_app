@@ -2,8 +2,8 @@
 
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:nihongo_dekita/QuestionController.dart';
-import 'package:nihongo_dekita/QuizBody.dart';
+import 'package:nihongo_dekita/controllers/question_controller.dart';
+import 'package:nihongo_dekita/quiz_body.dart';
 
 class QuizScreen extends StatelessWidget {
   final String userName;

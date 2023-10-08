@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:nihongo_dekita/QuestionController.dart';
+import 'package:nihongo_dekita/controllers/question_controller.dart';
 
 class ProgressBar extends StatelessWidget {
   const ProgressBar({

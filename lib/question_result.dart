@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
-import 'package:nihongo_dekita/QuestionController.dart';
+import 'package:nihongo_dekita/controllers/question_controller.dart';
 
 class QuestionResult extends StatelessWidget {
   const QuestionResult({
@@ -29,7 +29,7 @@ class QuestionResult extends StatelessWidget {
                 return const Color.fromARGB(255, 233, 46, 48);
               }
             }
-            return const Color.fromARGB(255, 80, 80, 80);
+            return Color.fromARGB(255, 80, 80, 80);
           }
 
           IconData getTheRightIcon() {
@@ -59,14 +59,14 @@ class QuestionResult extends StatelessWidget {
                     width: 26,
                     decoration: BoxDecoration(
                       color: getTheRightColor() ==
-                              const Color.fromARGB(255, 193, 193, 193)
+                              const Color.fromARGB(255, 80, 80, 80)
                           ? Colors.transparent
                           : getTheRightColor(),
                       borderRadius: BorderRadius.circular(50),
                       border: Border.all(color: getTheRightColor()),
                     ),
                     child: getTheRightColor() ==
-                            const Color.fromARGB(255, 193, 193, 193)
+                            const Color.fromARGB(255, 80, 80, 80)
                         ? null
                         : Icon(getTheRightIcon(), size: 16),
                   )
