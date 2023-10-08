@@ -7,7 +7,7 @@ Sample pictures of my app:
 
 Homescreen:
 
-![welcome screen](https://github.com/sumukha-7/ND_app/assets/92244766/d9988e45-d740-4610-b929-ba7d5e988dbc)
+![homescreen](https://github.com/sumukha-7/ND_app/assets/92244766/4c25797d-ce69-4540-9942-abdde932e263)
 
 Vocab and kanji quiz screen respectively:
 
@@ -15,7 +15,7 @@ Vocab and kanji quiz screen respectively:
 
 Final score:
 
-![score](https://github.com/sumukha-7/ND_app/assets/92244766/a05c1349-b93e-46a7-bafc-31f4190c5165)
+![scorescreen](https://github.com/sumukha-7/ND_app/assets/92244766/409e7246-e066-4183-ba45-38187d66af76)
 
 
 
