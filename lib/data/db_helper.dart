@@ -13,8 +13,20 @@ class DatabaseHelper {
     return _database!;
   }
 
+  Future<List<Map<String, dynamic>>> getData(String table) async {
+    var dbClient = await database;
+    var result = await dbClient.query(table);
+    return result;
+  }
+
+  Future<void> clearTable(String table) async {
+    var dbClient = await database;
+    await dbClient.delete(table);
+  }
+
   initDB() async {
     var directory = await getApplicationDocumentsDirectory();
+    print(directory.path);
     var path = join(directory.path, 'test.db');
     var database = await openDatabase(path, version: 1, onCreate: _onCreate);
     return database;
@@ -23,10 +35,16 @@ class DatabaseHelper {
   _onCreate(Database db, int version) async {
     await db.execute('CREATE TABLE kanji (key TEXT, value TEXT)');
     await db.execute('CREATE TABLE vocabulary (key TEXT, value TEXT)');
+
+    print("Tables created");
   }
 
   insertData(String table, String key, String value) async {
     var dbClient = await database;
-    await dbClient.insert(table, {'key': key, 'value': value});
+    try {
+      await dbClient.insert(table, {'key': key, 'value': value});
+    } catch (e) {
+      print('Error inserting data: $e');
+    }
   }
 }
