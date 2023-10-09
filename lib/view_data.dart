@@ -10,7 +10,7 @@ class ViewDataScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.blue[300],
       appBar: AppBar(
-        title: const Text("Your Stored Data"),
+        title: const Text("Your stored data"),
         backgroundColor: Colors.blue[300],
       ),
       body: Padding(
@@ -29,7 +29,7 @@ class ViewDataScreen extends StatelessWidget {
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 220, 16, 16)),
+                    const Color.fromARGB(255, 220, 16, 16)),
               ),
               onPressed: _controller.clearKanjiData,
               child: const Text(
@@ -41,7 +41,7 @@ class ViewDataScreen extends StatelessWidget {
             ElevatedButton(
               style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all<Color>(
-                    Color.fromARGB(255, 220, 16, 16)),
+                    const Color.fromARGB(255, 220, 16, 16)),
               ),
               onPressed: _controller.clearVocabData,
               child: const Text(

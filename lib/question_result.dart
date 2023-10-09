@@ -29,7 +29,7 @@ class QuestionResult extends StatelessWidget {
                 return const Color.fromARGB(255, 233, 46, 48);
               }
             }
-            return Color.fromARGB(255, 80, 80, 80);
+            return const Color.fromARGB(255, 80, 80, 80);
           }
 
           IconData getTheRightIcon() {

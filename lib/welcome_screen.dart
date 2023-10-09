@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nihongo_dekita/main.dart';
 import 'package:nihongo_dekita/quiz_screen.dart';
 import 'package:nihongo_dekita/controllers/question_controller.dart';
 import 'package:nihongo_dekita/upload_data.dart';
@@ -34,27 +35,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   fontSize: 32,
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const Spacer(flex: 1),
               const Text(
                 "Enter name to start",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              const Spacer(flex: 1),
+              const SizedBox(
+                height: 20,
+              ),
               TextField(
                 controller: nameController,
-                decoration: const InputDecoration(
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 54, 132, 196),
-                    hintText: "おなまえ を おねがいします",
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: Colors.black),
-                        borderRadius: BorderRadius.all(Radius.circular(12))),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Color.fromARGB(255, 100, 181, 246)),
-                        borderRadius: BorderRadius.all(Radius.circular(12)))),
+                decoration: customInputDecoration(hintText: "おなまえ を おねがいします"),
               ),
               const Spacer(flex: 1),
               InkWell(

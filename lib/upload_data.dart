@@ -1,10 +1,8 @@
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nihongo_dekita/data/db_helper.dart';
+import 'package:nihongo_dekita/main.dart';
 import 'package:nihongo_dekita/view_data.dart';
 import 'controllers/upload_data_controller.dart';
 
@@ -25,7 +23,7 @@ class _UploadDataScreenState extends State<UploadDataScreen> {
     return Scaffold(
       backgroundColor: Colors.blue[300],
       appBar: AppBar(
-        title: const Text("Enter data to upload"),
+        title: const Text("Enter data to database"),
         backgroundColor: Colors.blue[300],
       ),
       body: ListView(
@@ -33,33 +31,56 @@ class _UploadDataScreenState extends State<UploadDataScreen> {
           Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                TextField(
-                  controller: keyController,
-                  decoration: const InputDecoration(
-                    labelText: 'Key',
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 54, 132, 196),
-                    border: OutlineInputBorder(),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 8),
+                  child: Text(
+                    "Kanji/Vocabulary field:",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 20),
                 TextField(
-                  controller: valueController,
-                  decoration: const InputDecoration(
-                    labelText: 'Value',
-                    filled: true,
-                    fillColor: Color.fromARGB(255, 54, 132, 196),
-                    border: OutlineInputBorder(),
+                    controller: keyController,
+                    decoration: customInputDecoration(
+                        hintText: 'Enter japanese word here')),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 8, top: 20),
+                  child: Text(
+                    "Meaning field:",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
-                const SizedBox(height: 20),
+                TextField(
+                    controller: valueController,
+                    decoration:
+                        customInputDecoration(hintText: "Enter meaning here")),
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 8, top: 20),
+                  child: Text(
+                    "Choose kanji or vocabulary:",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   decoration: BoxDecoration(
                     color: const Color.fromARGB(255, 54, 132, 196),
                     borderRadius: BorderRadius.circular(4.0),
-                    border: Border.all(color: Colors.grey, width: 1),
+                    border: Border.all(
+                        color: const Color.fromARGB(255, 0, 0, 0), width: 1),
                   ),
                   child: Obx(
                     () => DropdownButtonHideUnderline(
@@ -85,23 +106,27 @@ class _UploadDataScreenState extends State<UploadDataScreen> {
                   ),
                 ),
                 const SizedBox(height: 40),
-                ElevatedButton(
-                    onPressed: () async {
-                      await _controller.uploadData(
-                          keyController.text, valueController.text);
+                Center(
+                  child: ElevatedButton(
+                      onPressed: () async {
+                        await _controller.uploadData(
+                            keyController.text, valueController.text);
+                      },
+                      child: const Text(
+                        "Upload to database",
+                        style: TextStyle(fontSize: 16),
+                      )),
+                ),
+                const SizedBox(height: 20),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => ViewDataScreen());
                     },
                     child: const Text(
-                      "Upload to database",
+                      "View Stored Data",
                       style: TextStyle(fontSize: 16),
-                    )),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => ViewDataScreen());
-                  },
-                  child: const Text(
-                    "View Stored Data",
-                    style: TextStyle(fontSize: 16),
+                    ),
                   ),
                 )
               ],
